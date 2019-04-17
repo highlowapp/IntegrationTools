@@ -2,6 +2,8 @@ import sys
 import re
 from docx import Document
 
+
+
 sql_file = open(sys.argv[1], "r")
 sql_code = sql_file.read()
 sql_file.close()
@@ -43,11 +45,12 @@ for i in range(len(sql_statements)):
 
 
     for i in columns_list:
+        i = i.strip()
         components = i.split(" ")
 
-        column_name = components[1]
+        column_name = components[0]
 
-        column_type = components[2:len(components)]
+        column_type = components[1:len(components)]
 
         column_dict = {
             "name": column_name,
